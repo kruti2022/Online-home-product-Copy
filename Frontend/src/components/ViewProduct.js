@@ -25,26 +25,13 @@ const ViewProduct = () => {
 
 
   else {
-
-    const getProductsData = async () => {
-      // API Call 
-      const response = await fetch(`http://localhost:3009/viewProduct`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          "x-access-token": localStorage.getItem("token")
-        }
-      });
-      const json = await response.json()
-      console.log(json)
-      setProducts(json) 
-  
-    useEffect(() => {
-      getProductsData()
-    }, [])
-     }
+   useEffect(()=>{
+     axios.get("http://localhost:3009/viewProduct").then((response) => {
+       setProducts(response.data);
+     })
+   }, [])
   }
-
+console.log(products)
 
 
   const sortData = async (sort) => {
@@ -53,13 +40,7 @@ const ViewProduct = () => {
   }
   const sortHandle = (e) => {
     const sort = e.target.value
-    if (sort === 'all') {
-      getProductsData()
-    }
-    else {
       sortData(sort)
-    }
-
   }
 
   return (
@@ -73,7 +54,6 @@ const ViewProduct = () => {
 
               <select className="form-control" id="" onChange={sortHandle} >
                 {/* <option value="" selected disabled hidden>Choose By Price</option> */}
-                <option value="all">All</option>
                 <option value="1000">less then 1000</option>
                 <option value="1000_5000">1000-5000</option>
                 <option value="5000">5000</option>
@@ -113,4 +93,6 @@ const ViewProduct = () => {
 }
 
 export default ViewProduct
+
+
 
