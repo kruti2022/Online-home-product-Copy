@@ -94,7 +94,7 @@ router.post('/updatePassword',[
 ], updatePassword)
 
 // Vendor Add Products
-router.post('/addProduct', upload.any('product_photo'), addProduct)
+router.post('/addProduct',authentication, upload.any('product_photo'), addProduct)
 
 // User View Products 
 router.get("/viewProduct",authentication, viewProduct)
@@ -109,7 +109,7 @@ router.get("/sort/:product_category", sortCategory)
 router.post("/viewProduct/:product_id",authentication, singleProduct)
 
 // Vendor View Products 
-router.get("/vendorViewProduct", vendorViewProduct)
+router.get("/vendorViewProduct",authentication, vendorViewProduct)
 
 // Vendor View Products by Id
 router.get('/viewProduct/:id', ViewProductById)

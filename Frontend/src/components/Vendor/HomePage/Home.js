@@ -30,7 +30,7 @@ export default function Home() {
           
 
           <li key="uniqueId02" className="nav-item">
-          <Link className="nav-link"  to="/viewproduct">
+          <Link className="nav-link"  to="/vendorViewproduct">
               <i className="mdi mdi-grid-large menu-icon"></i>
               <span className="menu-title">ViewProduct</span>
               </Link>
