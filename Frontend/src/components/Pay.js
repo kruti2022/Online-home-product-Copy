@@ -11,8 +11,8 @@ export default function Pay() {
     const navigate = useNavigate();
 
     if (!localStorage.getItem('token')) {
-        window.alert("You're not logged in!, Login first")
         useEffect(() => {
+            window.alert("You're not logged in!, Login first")
             navigate('/')
         }, [])
     }

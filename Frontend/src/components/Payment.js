@@ -21,8 +21,8 @@ const Payment = () => {
     var tot = 0;
 
     if (!localStorage.getItem('token')) {
-        window.alert("You're not logged in!, Login first")
         useEffect(() => {
+            window.alert("You're not logged in!, Login first")
             navigate('/')
         }, [])
     }

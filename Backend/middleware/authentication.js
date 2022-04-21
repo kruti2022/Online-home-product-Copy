@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const conn = require('../dbConnection')
 
 const authentication = (req, res, next) => {
-    const token = req.headers["x-access-token"]
+    const token = req.headers["token"]
 
     if (!token) {
         res.send({ login: false, msg: "You are not authorized for this!!!", redirect_path:"/"});

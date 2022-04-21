@@ -14,7 +14,8 @@ const vendorAddProduct = require('./controllers/productAddController');
 const { vendorViewProduct, ViewProductById, DeleteProduct, UpdateProduct } = require("./controllers/productViewController");
 const { sortPrice } = require('./controllers/sortPrice');
 const { sortCategory } = require('./controllers/sortCategory');
-const {OrderHistorybyId} = require('./controllers/OrderHistorybyId')
+const {OrderHistorybyId} = require('./controllers/OrderHistorybyId');
+const { ratings } = require('./controllers/ratingController');
 
 router.get("/isAuth",authentication, (req, res) => {
     res.send({ login: true, msg: "done" });
@@ -99,10 +100,10 @@ router.post('/addProduct', upload.any('product_photo'), addProduct)
 router.get("/viewProduct",authentication, viewProduct)
 
 // User Sort according Price
-router.get("/sort/:product_price",authentication, sortPrice)
+router.get("/sort/:product_price", sortPrice)
 
 // User Sort according Category
-router.get("/sort/:product_category",authentication, sortCategory)
+router.get("/sort/:product_category", sortCategory)
 
 // User Single Product Details
 router.post("/viewProduct/:product_id",authentication, singleProduct)
@@ -179,5 +180,8 @@ router.post("/changeStatus", (req, res) => {
 
 // User Order History
 router.get("/orderhistory/:user_id", [], OrderHistorybyId)
+
+// User Product Review
+router.post('/ratings', ratings)
 
 module.exports = router;

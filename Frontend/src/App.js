@@ -23,6 +23,9 @@ import Payment from './components/Payment';
 import Pay from './components/Pay';
 import MyOrders from './components/MyOrders';
 import Success from './components/Success';
+import VendorViewProduct from './components/Vendor/VendorViewProduct';
+import UpdateProduct  from './components/Vendor/UpdateProduct';
+import Rating from './components/Ratings';
 
 function App() {
     return (
@@ -40,6 +43,8 @@ function App() {
             <Route path="/forgotpassword" element={<ForgotPassword/>} />
             <Route path="/about" element={<About/>} />
             <Route path="/addproduct" element={<AddProduct/>}/>
+            <Route path="/vendorviewproduct" element={<VendorViewProduct/>} />
+            <Route path="/updateproduct/:id" element={<UpdateProduct/>} />
             <Route path="/viewproduct" element={<ViewProduct/>}/>
             <Route path="/details/:product_id" element={<ProductDetails/>} />
             <Route path="/vendor" element={<Home/>}/>
@@ -48,6 +53,7 @@ function App() {
             <Route path="/pay" element ={<Pay/>}/>
             <Route path="/order" element={<MyOrders/>} />
             <Route path="/success" element={<Success/>} />
+            <Route path="/ratings" element={<Rating />} />
             
       </Routes>  
       </div>

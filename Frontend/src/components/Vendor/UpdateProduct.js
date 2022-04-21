@@ -20,7 +20,7 @@ const UpdateProduct = () => {
     
     useEffect(async() => {
       const loadProduct = async () => {
-          const result = await axios.get(`http://localhost:3015/viewproduct/${id}`);
+          const result = await axios.get(`http://localhost:3009/vendorviewproduct/${id}`);
           console.log(result.data)
           
           setProduct(result.data.products[0]) //main part
@@ -56,7 +56,7 @@ const UpdateProduct = () => {
   async function onSubmit(product_id)  {
     //alert(product_id)
       console.log("enter",product_id)
-     await axios.put(`http://localhost:3015/updateProduct/${product_id}`,
+     await axios.put(`http://localhost:3009/updateProduct/${product_id}`,
      {
        product_id:product_id,
        product_name:product_name,
@@ -71,11 +71,6 @@ const UpdateProduct = () => {
        alert("Successfully Inserted")
    }).catch(error => console.log("error===>",error))
 
-    // .then(res =>{
-    //   res.data()
-    // })
-     //navigate("/viewproduct")
-    //alert(id)
 }
  
     return (

@@ -1,12 +1,15 @@
 const conn = require('../dbConnection')
 
-const vendorViewProduct = async (req, res,next) => {
-    conn.execute('SELECT *FROM home_product' , function (err, product) {
-        if (err) throw err;
-        return res.status(200).json({products : product})      
-        
-        //console.log(result);
-    })
+const vendorViewProduct = async (req, res) => {
+    let query = "SELECT * FROM home_product";
+    conn.query(query, (err, result) => {
+        if (err) {
+            console.log("error:", err);
+            return;
+        }
+        res.send(result);
+        console.log("products:", result);
+        });
 }
 
 const ViewProductById = async (req, res) => {

@@ -24,7 +24,7 @@ export default function Register() {
                 user_role: user_role
             })/* .then(() => {
                 alert("Successfully Inserted");    
-            }) */.catch(error => window.alert("Please Enter Valid Data"))
+            }) */.catch(error => alert("Please Enter Valid Data"))
 
         //console.log(setUserName, setUserEmail, setUserAddress, setUserContact, setUserRole);
         navigate("/");

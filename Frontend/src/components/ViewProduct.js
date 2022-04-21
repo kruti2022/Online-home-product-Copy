@@ -6,10 +6,11 @@ import { useNavigate } from 'react-router-dom'
 const ViewProduct = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate()
+  const token = window.localStorage.getItem('token')
 
   if (!localStorage.getItem('token')) {
-    window.alert("You're not logged in!, Login first")
     useEffect(() => {
+      window.alert("You're not logged in!, Login first")
       navigate('/')
     }, [])
   }
@@ -21,30 +22,23 @@ const ViewProduct = () => {
   }
  
   console.log("products:", products)
-  }, []) */ 
+  }, []) */
 
 
   else {
-
-    const getProductsData = async () => {
-      // API Call 
-      const response = await fetch(`http://localhost:3009/viewProduct`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          "x-access-token": localStorage.getItem("token")
-        }
-      });
-      const json = await response.json()
-      console.log(json)
-      setProducts(json) 
-  
     useEffect(() => {
-      getProductsData()
+      axios.get("http://localhost:3009/viewProduct", {
+        headers: {
+          'token': `${token}`
+        }
+      }
+      ).then((response) => {
+        setProducts(response.data);
+      })
     }, [])
-     }
+    console.log(token);
   }
-
+  console.log(products)
 
 
   const sortData = async (sort) => {
@@ -54,12 +48,13 @@ const ViewProduct = () => {
   const sortHandle = (e) => {
     const sort = e.target.value
     if (sort === 'all') {
-      getProductsData()
+        axios.get("http://localhost:3009/viewProduct").then((response) => {
+          setProducts(response.data);
+        })
     }
     else {
       sortData(sort)
     }
-
   }
 
   return (
@@ -73,7 +68,7 @@ const ViewProduct = () => {
 
               <select className="form-control" id="" onChange={sortHandle} >
                 {/* <option value="" selected disabled hidden>Choose By Price</option> */}
-                <option value="all">All</option>
+                <option value="all">ALL</option>
                 <option value="1000">less then 1000</option>
                 <option value="1000_5000">1000-5000</option>
                 <option value="5000">5000</option>
@@ -113,4 +108,3 @@ const ViewProduct = () => {
 }
 
 export default ViewProduct
-

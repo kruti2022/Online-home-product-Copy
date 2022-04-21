@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import VendorNavbar from './VendorNavbar'
 
 export default function AddProduct() {
@@ -15,7 +15,7 @@ export default function AddProduct() {
 
     const addproduct = async (e) => {
         e.preventDefault()
-        
+
         const formData = new FormData()
         formData.append('product_name', product_name)
         formData.append('product_description', product_description)
@@ -24,20 +24,20 @@ export default function AddProduct() {
         formData.append('product_photo', product_photo)
         formData.append('product_category', product_category)
 
-        await Axios.post('http://localhost:3015/addProduct', formData).then(() => {
-            navigate("/viewproduct")
+        await Axios.post('http://localhost:3009/addProduct', formData).then(() => {
+            navigate("/vendorviewproduct")
         }).catch(error => window.alert("Please Enter Valid Data"))
 
     }
 
     return (
         <>
-        
-<VendorNavbar/>
+
+            <VendorNavbar />
             <div>
                 <div className="container-scroller">
 
-                    
+
                     <div className="container-fluid page-body-wrapper">
 
                         <nav className="sidebar sidebar-offcanvas" tabIndex="-1" id="sidebar">
@@ -58,7 +58,7 @@ export default function AddProduct() {
 
 
                                 <li key="uniqueId4" className="nav-item">
-                                    <Link className="nav-link" to="/viewproduct">
+                                    <Link className="nav-link" to="/vendorviewproduct">
                                         <i className="mdi mdi-grid-large menu-icon"></i>
                                         <span className="menu-title">ViewProduct</span>
                                     </Link>

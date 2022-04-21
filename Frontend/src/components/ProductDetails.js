@@ -5,7 +5,7 @@ import { DataContext } from '../context/DataContext'
 
 const ProductDetails = () => {
     const { product_id } = useParams()
-    const nevigate = useNavigate()
+    const navigate = useNavigate()
 
     const { cart, setCart } = useContext(DataContext)
     const [detdata, setDetdata] = useState([])
@@ -43,8 +43,9 @@ const ProductDetails = () => {
     }
 
     if (!localStorage.getItem('token')) {
-        window.alert("You're not logged in!, Login first")
+
         useEffect(() => {
+            window.alert("You're not logged in!, Login first")
             navigate('/')
         }, [])
     }
@@ -56,7 +57,7 @@ const ProductDetails = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    "x-access-token": localStorage.getItem("token")
+                    "token": localStorage.getItem("token")
                 }
             });
             const json = await response.json()
@@ -85,13 +86,16 @@ const ProductDetails = () => {
             <div className="details">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-6 col-12 mx-auto mb-3">
+                        <div className="col-md-5 col-12 mx-auto mb-3">
                             <img src={'http://localhost:3009/' + detdata[0].product_photo} alt="" className="img-fluid p-im" />
                         </div>
                         <div className="col-md-6 col-12 mx-auto mb-3 d-flex  flex-column mt-5">
-                            <h2>{detdata[0].product_name}</h2>
+                            <h3>{detdata[0].product_name}</h3>
+                            <br />
                             <h4>Price : <strong>{detdata[0].product_price}.00</strong> </h4>
+                            <br />
                             <p>Description : {detdata[0].product_description}</p>
+                            <br />
                             <form onSubmit={onSub}>
                                 <input type="hidden" value={detdata[0].product_id} />
                                 <div class="form-group w-50">
@@ -109,6 +113,9 @@ const ProductDetails = () => {
                                 </div>
                                 {/* <input type="submit" className="btn btn-info" value="Add To Cart" /> */}
                             </form>
+                        </div>
+                        <div >
+                            <strong> REVIEW </strong>
                         </div>
                     </div>
                 </div>
