@@ -1,6 +1,5 @@
 const conn = require('../dbConnection')
 
-<<<<<<< HEAD
  /*const viewProduct = async (req, res, next) => {
     conn.execute('SELECT * FROM home_product' , function (err, product) {
         if (err) throw err;
@@ -16,8 +15,6 @@ const conn = require('../dbConnection')
     })  
 }*/
 
-=======
->>>>>>> 35635fe00eb529b481392dd10a4e964444f30249
 const viewProduct = async (req, res) => {
     let query = "SELECT * FROM home_product";
     conn.query(query, (err, result) => {
@@ -28,11 +25,10 @@ const viewProduct = async (req, res) => {
         res.send(result);
         console.log("products:", result);
         });
-<<<<<<< HEAD
+
 } 
 
 module.exports = { viewProduct }
-=======
+
 }
 module.exports = { viewProduct }
->>>>>>> 35635fe00eb529b481392dd10a4e964444f30249
