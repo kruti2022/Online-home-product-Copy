@@ -1,6 +1,6 @@
-const conn = require("../dbConnection");
+const conn = require('../dbConnection')
 
-/*const viewProduct = async (req, res, next) => {
+ /*const viewProduct = async (req, res, next) => {
     conn.execute('SELECT * FROM home_product' , function (err, product) {
         if (err) throw err;
         //return res.status(200).json({products : product})      
@@ -9,22 +9,23 @@ const conn = require("../dbConnection");
         } 
         
     }) */
-/* conn.execute('SELECT * FROM home_product' , function (err, product) {
+    /* conn.execute('SELECT * FROM home_product' , function (err, product) {
         if (err) throw err;
         return res.status(200).json({products : product})        
     })  
 }*/
 
 const viewProduct = async (req, res) => {
-  let query = "SELECT * FROM home_product";
-  conn.query(query, (err, result) => {
-    if (err) {
-      console.log("error:", err);
-      return;
-    }
-    res.send(result);
-    console.log("products:", result);
-  });
-};
+    let query = "SELECT * FROM home_product";
+    conn.query(query, (err, result) => {
+        if (err) {
+            console.log("error:", err);
+            return;
+        }
+        res.send(result);
+        console.log("products:", result);
+        });
 
-module.exports = { viewProduct };
+} 
+
+module.exports = { viewProduct }
