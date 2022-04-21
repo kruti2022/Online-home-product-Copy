@@ -29,6 +29,3 @@ const viewProduct = async (req, res) => {
 } 
 
 module.exports = { viewProduct }
-
-}
-module.exports = { viewProduct }
