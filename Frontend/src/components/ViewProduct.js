@@ -26,6 +26,7 @@ const ViewProduct = () => {
 
 
   else {
+<<<<<<< HEAD
     useEffect(() => {
       axios.get("http://localhost:3009/viewProduct", {
         headers: {
@@ -39,6 +40,15 @@ const ViewProduct = () => {
     console.log(token);
   }
   console.log(products)
+=======
+   useEffect(()=>{
+     axios.get("http://localhost:3009/viewProduct").then((response) => {
+       setProducts(response.data);
+     })
+   }, [])
+  }
+console.log(products)
+>>>>>>> 35635fe00eb529b481392dd10a4e964444f30249
 
 
   const sortData = async (sort) => {
@@ -47,6 +57,7 @@ const ViewProduct = () => {
   }
   const sortHandle = (e) => {
     const sort = e.target.value
+<<<<<<< HEAD
     if (sort === 'all') {
         axios.get("http://localhost:3009/viewProduct").then((response) => {
           setProducts(response.data);
@@ -55,6 +66,9 @@ const ViewProduct = () => {
     else {
       sortData(sort)
     }
+=======
+      sortData(sort)
+>>>>>>> 35635fe00eb529b481392dd10a4e964444f30249
   }
 
   return (
@@ -68,7 +82,10 @@ const ViewProduct = () => {
 
               <select className="form-control" id="" onChange={sortHandle} >
                 {/* <option value="" selected disabled hidden>Choose By Price</option> */}
+<<<<<<< HEAD
                 <option value="all">ALL</option>
+=======
+>>>>>>> 35635fe00eb529b481392dd10a4e964444f30249
                 <option value="1000">less then 1000</option>
                 <option value="1000_5000">1000-5000</option>
                 <option value="5000">5000</option>
@@ -107,4 +124,11 @@ const ViewProduct = () => {
 
 }
 
+<<<<<<< HEAD
 export default ViewProduct
+=======
+export default ViewProduct
+
+
+
+>>>>>>> 35635fe00eb529b481392dd10a4e964444f30249
