@@ -33,15 +33,15 @@ const addProduct = async (req, res) => {
         res.json({ status: 0 })
     }
     else {
-            const query=conn.query('INSERT INTO `home_product` (`product_name`,`product_category`, `product_description`, `product_price`, `product_discount`, `product_photo`) VALUES(?,?,?,?,?,?)',[
+            const query=conn.query('INSERT INTO `home_product` (`product_name`,`product_category`, `product_description`, `product_price`, `product_discount`, `product_photo`, `product_status`) VALUES(?,?,?,?,?,?,?)',[
             //const [rows] = conn.execute('INSERT INTO `home_product`(`product_name`,`product_description`,`product_price`,`product_discount`,`product_photo`) VALUES(?,?,?,?,?)', [
                 req.body.product_name,
                 req.body.product_category,
                 req.body.product_description,
                 req.body.product_price,
                 req.body.product_discount,
-                req.files[0].path
-
+                req.files[0].path,
+                'Not Paid'
             ],
             (error, results) => {
                 if (error) {

@@ -94,7 +94,24 @@ router.post('/updatePassword',[
 ], updatePassword)
 
 // Vendor Add Products
-router.post('/addProduct',authentication, upload.any('product_photo'), addProduct)
+router.post('/addProduct', upload.any('product_photo'), addProduct)
+
+// Change status in products table
+router.post("/changeProductStatus", (req, res) => {
+    product_id=req.body.product_id
+    let sql= `UPDATE home_product SET product_status='Paid' WHERE product_id=${product_id}`
+    conn.query(sql,(err,result)=>{
+        if(err)
+        {
+            console.log(err)
+        }
+        else{
+           
+            res.send({msg:"Updated Successfully"})
+
+        }
+    })
+})
 
 // User View Products 
 router.get("/viewProduct",authentication, viewProduct)

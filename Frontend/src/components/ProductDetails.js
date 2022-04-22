@@ -40,6 +40,8 @@ const ProductDetails = () => {
         else {
             setCart([...cart, data])
         }
+
+        navigate('/viewproduct')
     }
 
     if (!localStorage.getItem('token')) {
@@ -109,7 +111,7 @@ const ProductDetails = () => {
                                     </select>
                                 </div>
                                 <div className="text-left">
-                                    <button type="submit" className="btn btn-info" to='/viewproduct'>Add To Cart</button>
+                                    <button type="submit" className="btn btn-info">Add To Cart</button>
                                 </div>
                                 {/* <input type="submit" className="btn btn-info" value="Add To Cart" /> */}
                             </form>
